@@ -27,15 +27,12 @@ namespace PowerCruncher
             var remainder = input;
             int power = 0;
             var results = new List<string>();
-            while (true) {
+            while (remainder > 0) {
                 int digit = remainder % radix;
                 results.Add(string.Format(formatString, (int)Math.Pow(radix, power), digit, radix, power));                   
                 remainder -= digit;
                 remainder /= radix;
                 power++;
-
-                if (remainder <= 0) { break; }
-
             }
             return string.Join(this.joinString, results.Reverse<string>());
         }
